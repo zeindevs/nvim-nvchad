@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "gopls", "rust_analyzer", "pyright", "jsonls", "emmetls" }
+local servers = { "html", "cssls", "tsserver", "clangd", "gopls", "rust_analyzer", "pyright", "jsonls", "prismals" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -16,5 +16,8 @@ end
 --
 -- lspconfig.pyright.setup { blabla}
 
--- Load nvim-lsp-ts-utils
+-- setup nvim-lsp-ts-utils
 require('nvim-lsp-ts-utils').setup {}
+
+-- setup nvim-test
+require('nvim-test').setup {}
