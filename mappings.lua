@@ -16,9 +16,14 @@ M.general = {
       end,
       "formatting",
     },
-    ['<leader>gs'] = { ":TSLspOrganize<CR>", "TSLspOrganize", opts = { silent = true } },
-    ['<leader>gr'] = { ":TSLspRenameFile<CR>", "TSLspRenameFile", opts = { silent = true } },
-    ['<leader>gi'] = { ":TSLspImportAll<CR>", "TSLspImportAll", opts = { silent = true } }
+
+    -- tslsp
+    ['<leader>fs'] = { ":TSLspOrganize<CR>", "TSLspOrganize", opts = { silent = true } },
+    ['<leader>fr'] = { ":TSLspRenameFile<CR>", "TSLspRenameFile", opts = { silent = true } },
+    ['<leader>fi'] = { ":TSLspImportAll<CR>", "TSLspImportAll", opts = { silent = true } },
+
+    -- lazygit
+    ['<leader>lg'] = { "<cmd>LazyGit<cr>", "LazyGit", opts = { silent = true } },
   },
   v = {
     [">"] = { ">gv", "indent" },
