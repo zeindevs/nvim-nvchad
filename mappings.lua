@@ -23,7 +23,13 @@ M.general = {
     ['<leader>fi'] = { ":TSLspImportAll<CR>", "TSLspImportAll", opts = { silent = true } },
 
     -- lazygit
-    ['<leader>lg'] = { "<cmd>LazyGit<cr>", "LazyGit", opts = { silent = true } },
+    ['<leader>lg'] = { "<cmd>LazyGit<cr>", "LazyGit" },
+
+    -- nvim-test
+    ['<leader>tf'] = { ":TestFile<CR>", "TestFile" },
+    ['<leader>tn'] = { ":TestNearest<CR>", "TestNearest" },
+    ['<leader>ti'] = { ":TestInfo<CR>", "TestInfo" },
+    ['<leader>tl'] = { ":TestLast<CR>", "TestLast" },
   },
   v = {
     [">"] = { ">gv", "indent" },
