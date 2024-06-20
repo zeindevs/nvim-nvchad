@@ -50,6 +50,7 @@ M.mason = {
 M.nvimtree = {
   filters = {
     dotfiles = true,
+    custom = {"^\\.git"},
   },
 
   git = {
@@ -63,6 +64,11 @@ M.nvimtree = {
         git = true,
       },
     },
+  },
+
+  live_filter = {
+    prefix = "[FILTER]: ",
+    always_show_folders = false, -- Turn into false from true by default
   },
 }
 

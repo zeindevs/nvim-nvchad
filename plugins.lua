@@ -87,6 +87,9 @@ local plugins = {
     'jose-elias-alvarez/nvim-lsp-ts-utils',
     requires = { 'nvim-lua/plenary.nvim' },
     ft = { 'typescript', 'typescriptreact' }, -- Optional: Only load for specific filetypes
+    config = function()
+      require('nvim-lsp-ts-utils').setup()
+    end,
   },
 
   -- lazygit
@@ -112,7 +115,7 @@ local plugins = {
 
   -- Test Runner for neovim
   {
-    "klen/nvim-test"
+    "klen/nvim-test",
   }
 }
 
