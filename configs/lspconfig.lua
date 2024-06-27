@@ -4,7 +4,9 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 -- if you just want default config for the servers then put them in a table
 local servers = {
-  html = {},
+  html = {
+    filetypes = { "html" }
+  },
   cssls = {},
   tsserver = {},
   clangd = {},
@@ -13,8 +15,22 @@ local servers = {
   pyright = {},
   jsonls = {},
   prismals = {},
-  emmet_ls = {},
+  emmet_ls = {
+    filetypes = { "html", "astro" }
+  },
   svelte = {},
+  templ = {}
+}
+
+local configs = require "lspconfig.configs"
+
+configs.templ = {
+  default_config = {
+    cmd = { "templ", "lsp", "-http=localhost:7474" },
+    filetypes = { "templ" },
+    root_dir = require("lspconfig").util.root_pattern("go.mod", ".git"),
+    settings = {},
+  }
 }
 
 for name, opts in pairs(servers) do

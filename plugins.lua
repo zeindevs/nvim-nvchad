@@ -116,7 +116,7 @@ local plugins = {
   -- Test Runner for neovim
   {
     "klen/nvim-test",
-  }
+  },
 }
 
 return plugins
