@@ -28,4 +28,4 @@ local options = {
 	}
 }
 
-require("nvim-test").setup(options)
+return options

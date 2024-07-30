@@ -1,39 +1,21 @@
--- local autocmd = vim.api.nvim_create_autocmd
+require "core"
 
--- Auto resize panes when resizing nvim window
--- autocmd("VimResized", {
---   pattern = "*",
---   command = "tabdo wincmd =",
--- })
+local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
 
-vim.api.nvim_create_user_command("FormatDisable", function(args)
-  if args.bang then
-    -- FormatDisable! will disable formatting just for this buffer
-    vim.b.disable_autoformat = true
-  else
-    vim.g.disable_autoformat = true
-  end
-end, {
-  desc = "Disable autoformat-on-save",
-  bang = true,
-})
+if custom_init_path then
+  dofile(custom_init_path)
+end
 
-vim.api.nvim_create_user_command("FormatEnable", function()
-  vim.b.disable_autoformat = false
-  vim.g.disable_autoformat = false
-end, {
-  desc = "Re-enable autoformat-on-save",
-})
+require("core.utils").load_mappings()
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.templ" },
-  callback = function()
-    local file_name = vim.api.nvim_buf_get_name(0)
-    vim.cmd(":silent !templ fmt " .. file_name)
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-    local bufnr = vim.api.nvim_get_current_buf()
-    if vim.api.nvim_get_current_buf() == bufnr then
-      vim.cmd('e!')
-    end
-  end
-})
+-- bootstrap lazy.nvim!
+if not vim.loop.fs_stat(lazypath) then
+  require("core.bootstrap").gen_chadrc_template()
+  require("core.bootstrap").lazy(lazypath)
+end
+
+dofile(vim.g.base46_cache .. "defaults")
+vim.opt.rtp:prepend(lazypath)
+require "plugins"

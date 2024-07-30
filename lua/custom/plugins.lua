@@ -87,9 +87,6 @@ local plugins = {
     'jose-elias-alvarez/nvim-lsp-ts-utils',
     requires = { 'nvim-lua/plenary.nvim' },
     ft = { 'typescript', 'typescriptreact' }, -- Optional: Only load for specific filetypes
-    config = function()
-      require('nvim-lsp-ts-utils').setup()
-    end,
   },
 
   -- lazygit
@@ -116,7 +113,19 @@ local plugins = {
   -- Test Runner for neovim
   {
     "klen/nvim-test",
+    opts = require("custom.configs.nvimtest")
   },
+
+  -- Highlight, list and search todo comments in your projects
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    -- opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+    -- }
+  }
 }
 
 return plugins
