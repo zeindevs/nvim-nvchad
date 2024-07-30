@@ -8,15 +8,16 @@ local options = {
 		typescript = { "prettier" },
 		typescriptreact = { "prettier" },
 		javascriptreact = { "prettier" },
+		json = { "prettier" },
+		svelte = { "prettier" },
 		css = { "prettier" },
 		scss = { "prettier" },
 		html = { "prettier" },
 		python = { "black" },
 		go = { "gofmt" },
 		rust = { "rustfmt" },
-		-- c = { "clang-format" },
-		-- cpp = { "clang-format" },
-
+		c = { "clang-format" },
+		cpp = { "clang-format" },
 		sh = { "shfmt" },
 	},
 
@@ -32,9 +33,9 @@ local options = {
 	format_on_save = function(bufnr)
     -- Disable with a global or buffer-local variable
     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-      return
+      return {}
     end
-    return { timeout_ms = 1000, lsp_format = "fallback" }
+    return { timeout_ms = 500, lsp_fallback = true }
   end,
 }
 
