@@ -16,7 +16,7 @@ local servers = {
   "emmet_ls",
   "pyright",
   "tsserver",
-  "prismals"
+  "prismals",
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 
@@ -35,6 +35,3 @@ end
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
-
-require("nvim-test").setup {}
-require("nvim-lsp-ts-utils").setup {}

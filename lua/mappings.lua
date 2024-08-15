@@ -18,4 +18,6 @@ map("n", "<leader>tn", ":TestNearest<CR>", { desc = "TestNearest" })
 map("n", "<leader>ti", ":TestInfo<CR>", { desc = "TestInfo" })
 map("n", "<leader>tl", ":TestLast<CR>", { desc = "TestLast" })
 
+map("n", "<leader>vs", "<CMD>MCstart<CR>", {desc ="MCstart"})
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
