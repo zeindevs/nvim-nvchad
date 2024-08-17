@@ -99,4 +99,12 @@ return {
     cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
     keys = {},
   },
+
+  -- HTTP REST-Client Interface
+  {
+    "mistweaverco/kulala.nvim",
+    config = function()
+      require "configs.kulala"
+    end,
+  },
 }
