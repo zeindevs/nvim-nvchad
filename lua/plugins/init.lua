@@ -107,4 +107,10 @@ return {
       require "configs.kulala"
     end,
   },
+
+  -- Code Runner
+  {
+    "CRAG666/code_runner.nvim",
+    opts = require "configs.coderunner"
+  },
 }

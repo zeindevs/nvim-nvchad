@@ -3,6 +3,7 @@ require "nvchad.options"
 -- add yours here!
 require("nvim-test").setup {}
 require("nvim-lsp-ts-utils").setup {}
+require('code_runner').setup {}
 
 -- require('multicursors').setup {
 --     hint_config = false,
