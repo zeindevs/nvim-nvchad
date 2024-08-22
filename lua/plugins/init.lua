@@ -11,22 +11,6 @@ return {
     config = function()
       require "configs.lspconfig"
     end,
-    opts = {
-      servers = {
-        jsonls = {
-          on_new_config = function(new_config)
-            new_config.settings.json.schemas = new_config.settings.json.schemas or {}
-            vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
-          end,
-          settings = {
-            json = {
-              format = { enable = true },
-              validate = { enable = true },
-            },
-          },
-        },
-      },
-    },
   },
 
   -- jsonls schemastore
@@ -50,6 +34,9 @@ return {
         "zig",
         "php",
         "python",
+        "svelte",
+        "typescript",
+        "javascript",
       },
     },
   },
@@ -58,7 +45,7 @@ return {
   {
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     requires = { "nvim-lua/plenary.nvim" },
-    ft = { "typescript", "typescriptreact" }, -- Optional: Only load for specific filetypes
+    ft = { "javascript", "typescript", "typescriptreact" }, -- Optional: Only load for specific filetypes
   },
 
   -- Test Runner for neovim
@@ -113,4 +100,10 @@ return {
     "CRAG666/code_runner.nvim",
     opts = require "configs.coderunner"
   },
+
+  -- load local plugin example.nvim
+  -- {
+  --   dir = "D:/PROJECT/Nvim/example.nvim",
+  --   opts = {},
+  -- },
 }

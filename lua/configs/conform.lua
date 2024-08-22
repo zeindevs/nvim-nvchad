@@ -2,9 +2,11 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
     python = { "black" },
-    typescript = { "prettier" },
-    javascript = { "prettier" },
+    cmake = { "cmake-format" },
+    -- typescript = { "prettier" },
+    -- javascript = { "prettier" },
     -- css = { "prettier" },
+    -- json = { "prettier" },
     -- html = { "prettier" },
   },
 
