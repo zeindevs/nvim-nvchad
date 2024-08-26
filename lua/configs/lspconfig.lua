@@ -17,9 +17,9 @@ local servers = {
   tsserver = {},
   prismals = {},
   svelte = {},
-  basedpyright = {
-    -- typeCheckingMode = "basic"
-  },
+  -- basedpyright = {
+  --   typeCheckingMode = "basic"
+  -- },
   cmake = {},
   jsonls = {
     settings = {

@@ -23,8 +23,8 @@ map("n", "<leader>tl", ":TestLast<CR>", { desc = "TestLast" })
 
 map("n", "<leader>vs", "<CMD>MCstart<CR>", { desc = "MCstart" })
 
-map('n', '<leader>rc', ':RunCode<CR>', { desc = "RunCode" })
-map('n', '<leader>rf', ':RunFile<CR>', { desc = "RunFile" })
+map("n", "<leader>rc", ":RunCode<CR>", { desc = "RunCode" })
+map("n", "<leader>rf", ":RunFile<CR>", { desc = "RunFile" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 --
