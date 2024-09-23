@@ -95,6 +95,13 @@ return {
     end,
   },
 
+  {
+    "rest-nvim/rest.nvim",
+    config = function()
+      require("rest-nvim").setup {}
+    end
+  },
+
   -- Code Runner
   {
     "CRAG666/code_runner.nvim",
