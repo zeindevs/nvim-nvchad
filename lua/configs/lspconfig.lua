@@ -5,16 +5,18 @@ local lspconfig = require "lspconfig"
 
 -- EXAMPLE
 local servers = {
-  html = {},
+  html = {
+    filetypes = { "html" }
+  },
   cssls = {},
   gopls = {},
   rust_analyzer = {},
   intelephense = {},
   zls = {},
   clangd = {},
-  emmet_ls = {},
+  -- emmet_ls = {},
   pyright = {},
-  tsserver = {},
+  ts_ls = {},
   prismals = {},
   svelte = {},
   -- basedpyright = {
@@ -29,6 +31,7 @@ local servers = {
       }
     }
   },
+  templ = {}
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"
