@@ -59,26 +59,4 @@ end
 --   capabilities = nvlsp.capabilities,
 -- }
 
-require("nvim-test").setup {}
-require('code_runner').setup {}
-require("nvim-lsp-ts-utils").setup {}
--- require("example").setup {
---   name = "Max"
--- }
-
-require("multicursors").setup {
-  hint_config = {
-    float_opts = {
-      border = "rounded",
-    },
-    position = "middle-right",
-  },
-  generate_hints = {
-    normal = true,
-    insert = true,
-    extend = true,
-    config = {
-      column_count = 1,
-    },
-  },
-}
+require("configs.init")

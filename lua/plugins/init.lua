@@ -26,6 +26,7 @@ return {
         "lua",
         "vimdoc",
         "html",
+        "http",
         "css",
         "go",
         "rust",
@@ -38,6 +39,14 @@ return {
         "typescript",
         "javascript",
       },
+
+      -- autotag = {
+      --   enable = true,
+      -- },
+
+      -- indent = {
+      --   enable = true,
+      -- }
     },
   },
 
@@ -45,7 +54,11 @@ return {
   {
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     requires = { "nvim-lua/plenary.nvim" },
-    ft = { "javascript", "typescript", "typescriptreact" }, -- Optional: Only load for specific filetypes
+    ft = {
+      "javascript",
+      "typescript",
+      "typescriptreact",
+    }, -- Optional: Only load for specific filetypes
   },
 
   -- Test Runner for neovim
@@ -83,7 +96,14 @@ return {
       "nvimtools/hydra.nvim",
     },
     opts = {},
-    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+    cmd = {
+      "MCstart",
+      "MCvisual",
+      "MCclear",
+      "MCpattern",
+      "MCvisualPattern",
+      "MCunderCursor",
+    },
     keys = {},
   },
 
@@ -106,6 +126,10 @@ return {
   {
     "CRAG666/code_runner.nvim",
     opts = require "configs.coderunner",
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
   },
 
   -- load local plugin example.nvim
