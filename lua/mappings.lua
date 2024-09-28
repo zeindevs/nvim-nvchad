@@ -29,6 +29,8 @@ map("n", "<leader>rf", ":RunFile<CR>", { desc = "RunFile" })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 --
 
-vim.api.nvim_set_keymap("n", "<C-k>", ":lua require('kulala').jump_prev()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-j>", ":lua require('kulala').jump_next()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-l>", ":lua require('kulala').run()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-[>", ":lua require('kulala').jump_prev()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-]>", ":lua require('kulala').jump_next()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-CR>", ":lua require('kulala').run()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>co", "<cmd>lua require('kulala').copy()<cr>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>cb", "<cmd>lua require('kulala').close()<cr>", { noremap = true, silent = true })
