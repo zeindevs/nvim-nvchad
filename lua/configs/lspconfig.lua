@@ -19,6 +19,7 @@ local servers = {
   ts_ls = {},
   prismals = {},
   kotlin_language_server = {},
+  csharp_ls= {},
   bashls= {},
   svelte = {},
   -- basedpyright = {
