@@ -8,5 +8,6 @@ require "nvchad.options"
 vim.filetype.add {
   extension = {
     ["http"] = "http",
+    ["slint"] = "slint",
   },
 }

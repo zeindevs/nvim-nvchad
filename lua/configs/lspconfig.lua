@@ -34,7 +34,11 @@ local servers = {
       }
     }
   },
-  templ = {}
+  templ = {},
+  slint_lsp = {
+    cmd = { "slint-lsp" },
+    filetypes = { "slint" },
+  }
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"
