@@ -1,7 +1,7 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    python = { "black" },
+    python = { "ruff-format" },
     cmake = { "cmake-format" },
     typescript = { "prettier" },
     javascript = { "prettier" },

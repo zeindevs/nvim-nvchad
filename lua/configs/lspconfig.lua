@@ -15,16 +15,31 @@ local servers = {
   zls = {},
   clangd = {},
   -- emmet_ls = {},
-  pyright = {},
-  ts_ls = {},
-  prismals = {},
-  kotlin_language_server = {},
-  csharp_ls= {},
-  bashls= {},
-  svelte = {},
+  pyright = {
+    pyright = {
+      -- Using Ruff's import organizer
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        -- Ignore all files for analysis to exclusively use Ruff for linting
+        ignore = { '*' },
+      },
+    },
+  },
   -- basedpyright = {
   --   typeCheckingMode = "basic"
   -- },
+  ruff = {},
+  ts_ls = {},
+  prismals = {},
+  -- java_language_server = {
+  --   cmd = { "/home/zeindevs/.local/share/nvim/mason/bin/java-language-server" }
+  -- },
+  -- kotlin_language_server = {},
+  csharp_ls = {},
+  bashls = {},
+  svelte = {},
   cmake = {},
   jsonls = {
     settings = {
