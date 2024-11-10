@@ -40,3 +40,13 @@ require("multicursors").setup {
     },
   },
 }
+
+-- local venv_selector = require 'venv-selector'
+
+require('venv-selector').setup {
+  -- Your options go here
+  name = ".venv",
+  auto_refresh = true,
+  stay_on_this_version = true,
+  -- changed_venv_hooks = { venv_selector.hooks.pyright },
+}

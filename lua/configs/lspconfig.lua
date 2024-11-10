@@ -13,7 +13,9 @@ local servers = {
   rust_analyzer = {},
   intelephense = {},
   zls = {},
-  clangd = {},
+  clangd = {
+    filetypes = { "c", "cpp" }
+  },
   -- emmet_ls = {},
   pyright = {
     pyright = {
@@ -53,7 +55,8 @@ local servers = {
   slint_lsp = {
     cmd = { "slint-lsp" },
     filetypes = { "slint" },
-  }
+  },
+  bufls = {},
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"

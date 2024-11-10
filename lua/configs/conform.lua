@@ -8,6 +8,7 @@ local options = {
     css = { "prettier" },
     json = { "prettier" },
     html = { "prettier" },
+    proto = { "buf"}
   },
 
   -- format_on_save = {

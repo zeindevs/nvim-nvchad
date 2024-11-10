@@ -34,11 +34,16 @@ return {
         "cpp",
         "zig",
         "php",
+        "blade",
         "python",
         "svelte",
         "typescript",
         "javascript",
       },
+
+      -- highlight= {
+      --   enable = true,
+      -- }
 
       -- autotag = {
       --   enable = true,
@@ -48,6 +53,23 @@ return {
       --   enable = true,
       -- }
     },
+    config = function(_, opts)
+      vim.filetype.add({
+        pattern = {
+          [".*%.blade%.php"] = "blade",
+        },
+      })
+      require("nvim-treesitter.configs").setup(opts)
+      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+      parser_config.blade = {
+        install_info = {
+          url = "https://github.com/EmranMR/tree-sitter-blade",
+          files = { "src/parser.c" },
+          branch = "main",
+        },
+        filetype = "blade",
+      }
+    end
   },
 
   -- lsp ts utils
@@ -131,6 +153,10 @@ return {
   {
     "windwp/nvim-ts-autotag",
   },
+
+  'linux-cultist/venv-selector.nvim',
+  dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
+  event = 'VeryLazy',   -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
 
   -- load local plugin example.nvim
   -- {
