@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    -- event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
 
@@ -72,17 +72,6 @@ return {
     end
   },
 
-  -- lsp ts utils
-  {
-    "jose-elias-alvarez/nvim-lsp-ts-utils",
-    requires = { "nvim-lua/plenary.nvim" },
-    ft = {
-      "javascript",
-      "typescript",
-      "typescriptreact",
-    }, -- Optional: Only load for specific filetypes
-  },
-
   -- Test Runner for neovim
   {
     "klen/nvim-test",
@@ -103,7 +92,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- setting the keybinding for LazyGit with "keys" is recommended in
     -- order to load the plugin when the command is run for the first time
     -- keys = {
     --   { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
@@ -154,9 +143,19 @@ return {
     "windwp/nvim-ts-autotag",
   },
 
-  'linux-cultist/venv-selector.nvim',
-  dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
-  event = 'VeryLazy',   -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+  "linux-cultist/venv-selector.nvim",
+  dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
+  event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+
+  -- nvim-dap
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "leoluz/nvim-dap-go",
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+    }
+  },
 
   -- load local plugin example.nvim
   -- {

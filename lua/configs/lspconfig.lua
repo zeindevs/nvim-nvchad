@@ -56,7 +56,7 @@ local servers = {
     cmd = { "slint-lsp" },
     filetypes = { "slint" },
   },
-  bufls = {},
+  buf_ls = {},
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"

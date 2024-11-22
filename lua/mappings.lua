@@ -7,10 +7,6 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
-map("n", "<leader>so", ":TSLspOrganize<CR>", { desc = "TSLspOrganize" })
-map("n", "<leader>sr", ":TSLspRenameFile<CR>", { desc = "TSLspRenameFile" })
-map("n", "<leader>si", ":TSLspImportAll<CR>", { desc = "TSLspImportAll" })
-
 map("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
 
 map("n", "<leader>te", ":TestEdit<CR>", { desc = "TestEdit" })
@@ -32,11 +28,15 @@ map("n", '<leader>vc', '<cmd>VenvSelectCached<cr>')
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 --
 
-vim.api.nvim_set_keymap("n", "<M-[>", ":lua require('kulala').jump_prev()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<M-]>", ":lua require('kulala').jump_next()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<M-CR>", ":lua require('kulala').run()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>co", "<cmd>lua require('kulala').copy()<cr>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>cb", "<cmd>lua require('kulala').close()<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<M-[>", ":lua require('kulala').jump_prev()<CR>", { desc = "kulala jump_next" })
+vim.keymap.set("n", "<M-]>", ":lua require('kulala').jump_next()<CR>", { desc = "kulala jump_prev" })
+vim.keymap.set("n", "<M-CR>", ":lua require('kulala').run()<CR>", { desc = "kulala run" })
+vim.keymap.set("n", "<leader>co", "<cmd>lua require('kulala').copy()<cr>", { desc = "kulala copy" })
+-- vim.keymap.set("n", "<leader>cb", "<cmd>lua require('kulala').close()<cr>", { desc = "kulala close" })
+
+vim.keymap.set('n', '<leader>db', ":lua require('dap').toggle_breakpoint()<CR>", { desc = "dap breakpoint" })
+vim.keymap.set('n', '<leader>dc', ":lua require('dap').continue()<CR>", { desc = "dap continue" })
+vim.keymap.set('n', '<leader>dn', ":lua require('dap').step_over()<CR>", { desc = "dap step over" })
 
 -- Keyboard users
 vim.keymap.set("n", "<C-t>", function()
