@@ -57,6 +57,7 @@ local servers = {
     filetypes = { "slint" },
   },
   buf_ls = {},
+  asm_lsp = {},
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"
@@ -67,21 +68,5 @@ for name, opts in pairs(servers) do
   opts.capabilities = nvlsp.capabilities
   lspconfig[name].setup(opts)
 end
-
--- lsps with default config
--- for _, lsp in ipairs(servers) do
---   lspconfig[lsp].setup {
---     on_attach = nvlsp.on_attach,
---     on_init = nvlsp.on_init,
---     capabilities = nvlsp.capabilities,
---   }
--- end
-
--- configuring single server, example: typescript
--- lspconfig.tsserver.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
 
 require("configs.init")

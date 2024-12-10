@@ -3,19 +3,20 @@ local options = {
     lua = { "stylua" },
     python = { "ruff-format" },
     cmake = { "cmake-format" },
-    typescript = { "prettier" },
-    javascript = { "prettier" },
-    css = { "prettier" },
-    json = { "prettier" },
-    html = { "prettier" },
-    proto = { "buf"}
+    typescript = { "prettierd" },
+    javascript = { "prettierd" },
+    css = { "prettierd" },
+    json = { "prettierd" },
+    html = { "prettierd" },
+    proto = { "buf" },
+    asm = { "asmfmt" },
   },
 
-  -- format_on_save = {
-  --   -- These options will be passed to conform.format()
-  --   timeout_ms = 500,
-  --   lsp_fallback = true,
-  -- },
+  format_on_save = {
+    --   -- These options will be passed to conform.format()
+    timeout_ms = 1500,
+    lsp_fallback = true,
+  },
 }
 
 return options

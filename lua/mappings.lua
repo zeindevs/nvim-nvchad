@@ -7,6 +7,7 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", { desc = "LSP Code Action", silent = true })
+map("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>", { desc = "LSP go to definition", silent = true })
 map("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
 
 map("n", "<leader>te", ":TestEdit<CR>", { desc = "TestEdit" })
