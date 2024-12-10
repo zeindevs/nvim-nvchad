@@ -144,7 +144,11 @@ return {
   },
 
   "linux-cultist/venv-selector.nvim",
-  dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
+  dependencies = {
+    "neovim/nvim-lspconfig",
+    "nvim-telescope/telescope.nvim",
+    "mfussenegger/nvim-dap-python",
+  },
   event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
 
   -- nvim-dap
@@ -155,6 +159,27 @@ return {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
     }
+  },
+
+  -- markdown
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "echasnovski/mini.nvim",
+    },
+    opts = {},
+  },
+
+  -- flutter/dart
+  {
+    'nvim-flutter/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = true,
   },
 
   -- load local plugin example.nvim

@@ -1,8 +1,8 @@
 require("nvim-test").setup {}
 
-require('code_runner').setup {}
+require("code_runner").setup {}
 
-require('nvim-ts-autotag').setup {
+require("nvim-ts-autotag").setup {
   opts = {
     -- Defaults
     enable_close = true,          -- Auto close tags
@@ -39,9 +39,9 @@ require("multicursors").setup {
   },
 }
 
--- local venv_selector = require 'venv-selector'
+-- local venv_selector = require "venv-selector"
 
-require('venv-selector').setup {
+require("venv-selector").setup {
   -- Your options go here
   name = ".venv",
   auto_refresh = true,
@@ -49,9 +49,13 @@ require('venv-selector').setup {
   -- changed_venv_hooks = { venv_selector.hooks.pyright },
 }
 
-require('dap-go').setup {}
+require("flutter-tools").setup {}
+
+require("dap-go").setup {}
 
 require("dapui").setup {}
+
+require("render-markdown").setup {}
 
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.before.attach.dapui_config = function()
