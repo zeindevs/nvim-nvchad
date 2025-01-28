@@ -182,6 +182,11 @@ return {
     config = true,
   },
 
+  {
+    'wakatime/vim-wakatime',
+    lazy = false,
+  },
+
   -- load local plugin example.nvim
   -- {
   --   dir = "D:/PROJECT/Nvim/example.nvim",
