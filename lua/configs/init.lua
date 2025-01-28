@@ -44,8 +44,9 @@ require("multicursors").setup {
 require("venv-selector").setup {
   -- Your options go here
   name = ".venv",
-  auto_refresh = true,
+  auto_refresh = false,
   stay_on_this_version = true,
+  parents = 0,
   -- changed_venv_hooks = { venv_selector.hooks.pyright },
 }
 
