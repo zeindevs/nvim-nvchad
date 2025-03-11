@@ -58,6 +58,8 @@ local servers = {
   },
   buf_ls = {},
   asm_lsp = {},
+  ols = {},
+  biome = {},
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"
