@@ -6,7 +6,7 @@ local lspconfig = require "lspconfig"
 -- EXAMPLE
 local servers = {
   html = {
-    filetypes = { "html" }
+    filetypes = { "html", "ejs" }
   },
   cssls = {},
   gopls = {},

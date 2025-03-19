@@ -10,13 +10,24 @@ map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", { desc = "LSP Code 
 map("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>", { desc = "LSP go to definition", silent = true })
 map("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
 
-map("n", "<leader>te", ":TestEdit<CR>", { desc = "TestEdit" })
-map("n", "<leader>ts", ":TestSuite<CR>", { desc = "TestSuite" })
-map("n", "<leader>tv", ":TestVisit<CR>", { desc = "TestVisit" })
-map("n", "<leader>tf", ":TestFile<CR>", { desc = "TestFile" })
-map("n", "<leader>tn", ":TestNearest<CR>", { desc = "TestNearest" })
-map("n", "<leader>ti", ":TestInfo<CR>", { desc = "TestInfo" })
-map("n", "<leader>tl", ":TestLast<CR>", { desc = "TestLast" })
+-- map("n", "<leader>te", ":TestEdit<CR>", { desc = "TestEdit" })
+-- map("n", "<leader>ts", ":TestSuite<CR>", { desc = "TestSuite" })
+-- map("n", "<leader>tv", ":TestVisit<CR>", { desc = "TestVisit" })
+-- map("n", "<leader>tf", ":TestFile<CR>", { desc = "TestFile" })
+-- map("n", "<leader>tn", ":TestNearest<CR>", { desc = "TestNearest" })
+-- map("n", "<leader>ti", ":TestInfo<CR>", { desc = "TestInfo" })
+-- map("n", "<leader>tl", ":TestLast<CR>", { desc = "TestLast" })
+
+
+map("n", "<leader>tn", ":lua require('neotest').run.run({ vitestCommand = './node_modules/.bin/vitest' })<CR>",
+  { desc = "NeoTestRun Nearest", silent = true })
+map("n", "<leader>tf",
+  ":lua require('neotest').run.run({ vim.fn.expand('%'), vitestCommand = './node_modules/.bin/vitest' })<CR>",
+  { desc = "NeoTestRun File", silent = true })
+map("n", "<leader>tb", ":lua require('neotest').run.stop()<CR>", { desc = "NeoTestStop", silent = true })
+map("n", "<leader>ts", ":lua require('neotest').summary.toggle()<CR>", { desc = "NeoTestSummary", silent = true })
+map("n", "<leader>tp", ":lua require('neotest').output_panel.toggle()<CR>", { desc = "NeoTestPanel", silent = true })
+map("n", "<leader>to", ":lua require('neotest').output.open()<CR>", { desc = "NeoTestOutput", silent = true })
 
 map("n", "<leader>ms", "<cmd>MCstart<CR>", { desc = "MCstart" })
 
