@@ -54,11 +54,11 @@ return {
       -- }
     },
     config = function(_, opts)
-      vim.filetype.add({
+      vim.filetype.add {
         pattern = {
           [".*%.blade%.php"] = "blade",
         },
-      })
+      }
       require("nvim-treesitter.configs").setup(opts)
       local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
       parser_config.blade = {
@@ -69,7 +69,7 @@ return {
         },
         filetype = "blade",
       }
-    end
+    end,
   },
 
   -- Test Runner for neovim
@@ -100,23 +100,23 @@ return {
   },
 
   -- multicursors
-  {
-    "smoka7/multicursors.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "nvimtools/hydra.nvim",
-    },
-    opts = {},
-    cmd = {
-      "MCstart",
-      "MCvisual",
-      "MCclear",
-      "MCpattern",
-      "MCvisualPattern",
-      "MCunderCursor",
-    },
-    keys = {},
-  },
+  -- {
+  --   "smoka7/multicursors.nvim",
+  --   event = "VeryLazy",
+  --   dependencies = {
+  --     "nvimtools/hydra.nvim",
+  --   },
+  --   opts = {},
+  --   cmd = {
+  --     "MCstart",
+  --     "MCvisual",
+  --     "MCclear",
+  --     "MCpattern",
+  --     "MCvisualPattern",
+  --     "MCunderCursor",
+  --   },
+  --   keys = {},
+  -- },
 
   -- HTTP REST-Client Interface
   {
@@ -126,12 +126,12 @@ return {
     end,
   },
 
-  {
-    "rest-nvim/rest.nvim",
-    config = function()
-      require("rest-nvim").setup {}
-    end
-  },
+  -- {
+  --   "rest-nvim/rest.nvim",
+  --   config = function()
+  --     require("rest-nvim").setup {}
+  --   end,
+  -- },
 
   -- Code Runner
   {
@@ -158,7 +158,7 @@ return {
       "leoluz/nvim-dap-go",
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
-    }
+    },
   },
 
   -- markdown
@@ -173,17 +173,17 @@ return {
 
   -- flutter/dart
   {
-    'nvim-flutter/flutter-tools.nvim',
+    "nvim-flutter/flutter-tools.nvim",
     lazy = false,
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim', -- optional for vim.ui.select
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim", -- optional for vim.ui.select
     },
     config = true,
   },
 
   {
-    'wakatime/vim-wakatime',
+    "wakatime/vim-wakatime",
     lazy = false,
   },
 
@@ -199,15 +199,15 @@ return {
       "nvim-neotest/neotest-go",
     },
     config = function()
-      require("neotest").setup({
+      require("neotest").setup {
         adapters = {
-          require("neotest-vitest"),
-          require("neotest-python"),
-          require("neotest-go")({
-            args = { "-count=1" }
-          }),
-        }
-      })
+          require "neotest-vitest",
+          require "neotest-python",
+          require "neotest-go" {
+            args = { "-count=1" },
+          },
+        },
+      }
     end,
   },
 
