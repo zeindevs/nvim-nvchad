@@ -9,7 +9,7 @@ M.nvdash = {
 }
 
 M.base46 = {
-  theme = "tomorrow_night",
+  theme = "chadracula-evondev",
 
   -- hl_override = {
   -- 	Comment = { italic = true },
