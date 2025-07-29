@@ -60,6 +60,7 @@ local servers = {
   asm_lsp = {},
   ols = {},
   biome = {},
+  ruby_lsp = {},
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"

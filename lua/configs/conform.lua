@@ -10,6 +10,7 @@ local options = {
     html = { "biome" },
     proto = { "buf" },
     asm = { "asmfmt" },
+    ruby = { "rubyfmt" },
   },
 
   format_on_save = {
