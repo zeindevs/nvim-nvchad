@@ -71,4 +71,6 @@ for name, opts in pairs(servers) do
   lspconfig[name].setup(opts)
 end
 
+vim.diagnostic.config({ virtual_text = false })
+
 require("configs.init")

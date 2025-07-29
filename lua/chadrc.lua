@@ -8,8 +8,15 @@ M.nvdash = {
   load_on_startup = true,
 }
 
+-- M.ui = {
+--       tabufline = {
+--          lazyload = false
+--      }
+--}
+
 M.base46 = {
-  theme = "chadracula-evondev",
+  theme = "tomorrow_night",
+  integrations = { "dap" }
 
   -- hl_override = {
   -- 	Comment = { italic = true },

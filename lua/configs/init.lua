@@ -58,6 +58,8 @@ require("dapui").setup {}
 
 require("render-markdown").setup {}
 
+require("supermaven-nvim").setup { }
+
 local dap, dapui = require "dap", require "dapui"
 dap.adapters.gdb = {
   type = "executable",

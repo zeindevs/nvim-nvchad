@@ -211,6 +211,37 @@ return {
     end,
   },
 
+  {
+    "onsails/lspkind.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "configs.lspkind"
+    end,
+  },
+
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy", -- Or `LspAttach`
+    priority = 1000, -- needs to be loaded in first
+    config = function()
+      require "configs.tiny-inline-diagnostic"
+    end,
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      {
+        "supermaven-inc/supermaven-nvim",
+        opts = {},
+      },
+    },
+    opts = function(_, opts)
+      opts.sources[1].trigger_chars = { "-" }
+      table.insert(opts.sources, 1, { name = "supermaven" })
+    end,
+  },
+
   -- load local plugin example.nvim
   -- {
   --   dir = "D:/PROJECT/Nvim/example.nvim",
