@@ -196,16 +196,20 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "marilari88/neotest-vitest",
       "nvim-neotest/neotest-python",
-      "nvim-neotest/neotest-go",
+      "fredrikaverpil/neotest-golang",
+      "arthur944/neotest-bun",
+      "olimorris/neotest-phpunit"
     },
     config = function()
       require("neotest").setup {
         adapters = {
           require "neotest-vitest",
           require "neotest-python",
-          require "neotest-go" {
+          require "neotest-golang" {
             args = { "-count=1" },
           },
+          require "neotest-bun",
+          require "neotest-phpunit"
         },
       }
     end,
@@ -233,7 +237,8 @@ return {
     dependencies = {
       {
         "supermaven-inc/supermaven-nvim",
-        opts = {},
+        -- event = "InsertEnter", -- load only when needed
+        opts = { },
       },
     },
     opts = function(_, opts)
@@ -242,6 +247,22 @@ return {
     end,
   },
 
+  {
+    "github/copilot.vim",
+    -- event = "InsertEnter",
+    config = function()
+      require "configs.copilot"
+    end
+  },
+
+  {
+   'oribarilan/lensline.nvim',
+    tag = '1.0.0', -- or: branch = 'release/1.x' for latest non-breaking updates
+    event = 'LspAttach',
+    config = function()
+      require("lensline").setup()
+    end,
+  }
   -- load local plugin example.nvim
   -- {
   --   dir = "D:/PROJECT/Nvim/example.nvim",

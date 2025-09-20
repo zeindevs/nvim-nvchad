@@ -42,7 +42,6 @@ require("nvim-ts-autotag").setup {
 -- local venv_selector = require "venv-selector"
 
 require("venv-selector").setup {
-  -- Your options go here
   name = ".venv",
   auto_refresh = false,
   stay_on_this_version = true,
@@ -58,7 +57,9 @@ require("dapui").setup {}
 
 require("render-markdown").setup {}
 
-require("supermaven-nvim").setup { }
+require("supermaven-nvim").setup {
+  disable_default = true, -- disable it by default
+}
 
 local dap, dapui = require "dap", require "dapui"
 dap.adapters.gdb = {
