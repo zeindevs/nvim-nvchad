@@ -71,6 +71,10 @@ local servers = {
   -- elixirls = {
   -- cmd = { "/home/zeindevs/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
   -- },
+  qmlls = {
+    cmd = { "qmlls" },
+    filetypes = { "qml" },
+  },
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"
@@ -84,5 +88,3 @@ for name, opts in pairs(servers) do
 end
 
 vim.diagnostic.config { virtual_text = false }
-
-require "configs.init"

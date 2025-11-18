@@ -18,6 +18,11 @@ return {
     "b0o/schemastore.nvim",
   },
 
+  -- test new blink
+  -- {
+  --   import = "nvchad.blink.lazyspec",
+  -- },
+
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -72,12 +77,6 @@ return {
     end,
   },
 
-  -- Test Runner for neovim
-  -- {
-  --   "klen/nvim-test",
-  --   opts = require "configs.nvimtest",
-  -- },
-
   -- lazygit
   {
     "kdheepak/lazygit.nvim",
@@ -92,64 +91,52 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    -- setting the keybinding for LazyGit with "keys" is recommended in
-    -- order to load the plugin when the command is run for the first time
-    -- keys = {
-    --   { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-    -- }
   },
 
-  -- multicursors
-  -- {
-  --   "smoka7/multicursors.nvim",
-  --   event = "VeryLazy",
-  --   dependencies = {
-  --     "nvimtools/hydra.nvim",
-  --   },
-  --   opts = {},
-  --   cmd = {
-  --     "MCstart",
-  --     "MCvisual",
-  --     "MCclear",
-  --     "MCpattern",
-  --     "MCvisualPattern",
-  --     "MCunderCursor",
-  --   },
-  --   keys = {},
-  -- },
+  {
+    "mg979/vim-visual-multi",
+    event = "VeryLazy",
+  },
 
   -- HTTP REST-Client Interface
   {
     "mistweaverco/kulala.nvim",
-    config = function()
-      require "configs.kulala"
-    end,
+    ft = { "http", "rest" },
+    opts = {
+      global_keymaps = true,
+      global_keymaps_prefix = "<leader>R",
+      kulala_keymaps_prefix = "",
+    },
   },
-
-  -- {
-  --   "rest-nvim/rest.nvim",
-  --   config = function()
-  --     require("rest-nvim").setup {}
-  --   end,
-  -- },
 
   -- Code Runner
   {
     "CRAG666/code_runner.nvim",
     opts = require "configs.coderunner",
+    config = function()
+      require("code_runner").setup {}
+    end,
   },
 
   {
     "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-ts-autotag").setup {}
+    end,
   },
 
-  "linux-cultist/venv-selector.nvim",
-  dependencies = {
-    "neovim/nvim-lspconfig",
-    "nvim-telescope/telescope.nvim",
-    "mfussenegger/nvim-dap-python",
+  {
+    "linux-cultist/venv-selector.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "nvim-telescope/telescope.nvim",
+    },
+    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    config = function()
+      require("venv-selector").setup {}
+    end,
   },
-  event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
 
   -- nvim-dap
   {
@@ -159,6 +146,9 @@ return {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
     },
+    config = function()
+      require "configs.dap"
+    end,
   },
 
   -- markdown
@@ -169,6 +159,9 @@ return {
       "echasnovski/mini.nvim",
     },
     opts = {},
+    config = function()
+      require("render-markdown").setup {}
+    end,
   },
 
   -- flutter/dart
@@ -179,7 +172,9 @@ return {
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim", -- optional for vim.ui.select
     },
-    config = true,
+    config = function()
+      require("flutter-tools").setup {}
+    end,
   },
 
   {
@@ -198,7 +193,8 @@ return {
       "nvim-neotest/neotest-python",
       "fredrikaverpil/neotest-golang",
       "arthur944/neotest-bun",
-      "olimorris/neotest-phpunit"
+      "olimorris/neotest-phpunit",
+      "orjangj/neotest-ctest",
     },
     config = function()
       require("neotest").setup {
@@ -209,7 +205,8 @@ return {
             args = { "-count=1" },
           },
           require "neotest-bun",
-          require "neotest-phpunit"
+          require "neotest-phpunit",
+          require "neotest-ctest",
         },
       }
     end,
@@ -228,7 +225,7 @@ return {
     event = "VeryLazy", -- Or `LspAttach`
     priority = 1000, -- needs to be loaded in first
     config = function()
-      require "configs.tiny-inline-diagnostic"
+      require("tiny-inline-diagnostic").setup {}
     end,
   },
 
@@ -237,8 +234,8 @@ return {
     dependencies = {
       {
         "supermaven-inc/supermaven-nvim",
-        -- event = "InsertEnter", -- load only when needed
-        opts = { },
+        event = "InsertEnter", -- load only when needed
+        opts = {},
       },
     },
     opts = function(_, opts)
@@ -251,18 +248,36 @@ return {
     "github/copilot.vim",
     -- event = "InsertEnter",
     config = function()
-      require "configs.copilot"
-    end
+      require("copilot").setup {}
+    end,
   },
 
   {
-   'oribarilan/lensline.nvim',
-    tag = '1.0.0', -- or: branch = 'release/1.x' for latest non-breaking updates
-    event = 'LspAttach',
+    "oribarilan/lensline.nvim",
+    tag = "1.0.0", -- or: branch = 'release/1.x' for latest non-breaking updates
+    event = "LspAttach",
     config = function()
       require("lensline").setup()
     end,
-  }
+  },
+
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+      { "tpope/vim-dadbod", lazy = true },
+      -- { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
+    },
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+    },
+    init = function()
+      vim.g.db_ui_use_nerd_fonts = 1
+    end,
+  },
+
   -- load local plugin example.nvim
   -- {
   --   dir = "D:/PROJECT/Nvim/example.nvim",

@@ -15,8 +15,8 @@ M.nvdash = {
 --}
 
 M.base46 = {
-  theme = "tomorrow_night",
-  integrations = { "dap" }
+  theme = "onedark",
+  integrations = { "dap" },
 
   -- hl_override = {
   -- 	Comment = { italic = true },
@@ -25,15 +25,10 @@ M.base46 = {
 }
 
 M.term = {
-  winopts = { number = false, relativenumber = false },
-  sizes = { sp = 0.3, vsp = 0.4, ["bo sp"] = 0.3, ["bo vsp"] = 0.4 },
   float = {
-    relative = "editor",
-    row = 0.15,
+    row = 0.2,
     col = 0.1,
     width = 0.8,
-    height = 0.5,
-    border = "single",
   },
 }
 

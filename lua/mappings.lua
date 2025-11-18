@@ -4,26 +4,33 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
+-- map("i", "jk", "<ESC>")
+
+-- Keyboard users
+map("n", "<C-t>", function()
+  require("menu.utils").delete_old_menus()
+  require("menu").open "default"
+end, {})
+
+-- mouse users + nvimtree users!
+map("n", "<RightMouse>", function()
+  require("menu.utils").delete_old_menus()
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+  local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
+  local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true })
+end, {})
+
+map("n", "<leader>lg", ":LazyGit<CR>", { desc = "LazyGit" })
+map("n", "<leader>lr", ":LspRestart<CR>", { desc = "LspRestart" })
+map("n", "<leader>lt", ":LenslineToggle<CR>", { desc = "LenslineToggle" })
 
 -- lsp
 map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", { desc = "LSP Code Action", silent = true })
 map("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>", { desc = "LSP go to definition", silent = true })
-
-map("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
-
 -- telescope
 map("n", "<leader>fd", "<cmd>Telescope lsp_definitions<CR>", { desc = "telescope find definitions" })
 map("n", "<leader>fr", "<cmd>Telescope lsp_references<CR>", { desc = "telescope find references" })
-
--- nvimtest
--- map("n", "<leader>te", ":TestEdit<CR>", { desc = "TestEdit" })
--- map("n", "<leader>ts", ":TestSuite<CR>", { desc = "TestSuite" })
--- map("n", "<leader>tv", ":TestVisit<CR>", { desc = "TestVisit" })
--- map("n", "<leader>tf", ":TestFile<CR>", { desc = "TestFile" })
--- map("n", "<leader>tn", ":TestNearest<CR>", { desc = "TestNearest" })
--- map("n", "<leader>ti", ":TestInfo<CR>", { desc = "TestInfo" })
--- map("n", "<leader>tl", ":TestLast<CR>", { desc = "TestLast" })
 
 -- neotest
 map(
@@ -43,15 +50,14 @@ map("n", "<leader>ts", ":lua require('neotest').summary.toggle()<CR>", { desc = 
 map("n", "<leader>tp", ":lua require('neotest').output_panel.toggle()<CR>", { desc = "NeoTestPanel", silent = true })
 map("n", "<leader>to", ":lua require('neotest').output.open()<CR>", { desc = "NeoTestOutput", silent = true })
 
-map("n", "<leader>ms", "<cmd>MCstart<CR>", { desc = "MCstart" })
-
--- code runner 
+-- code runner
 map("n", "<leader>rc", ":RunCode<CR>", { desc = "RunCode" })
 map("n", "<leader>rf", ":RunFile<CR>", { desc = "RunFile" })
 
 -- venv
-map("n", "<leader>vs", "<cmd>VenvSelect<cr>")
-map("n", "<leader>vc", "<cmd>VenvSelectCached<cr>")
+map("n", "<leader>sv", ":VenvSelect<cr>", { desc = "VenvSelect" })
+
+map("n", "<leader>du", ":DBUI<CR>", { desc = "DBUI" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 --
@@ -64,21 +70,23 @@ map("n", "<leader>co", ":lua require('kulala').copy()<CR>", { desc = "kulala cop
 -- map("n", "<leader>cb", ":lua require('kulala').close()<cr>", { desc = "kulala close", silent = true })
 
 -- dap
-map("n", "<leader>db", ":lua require('dap').toggle_breakpoint()<CR>", { desc = "dap breakpoint", silent = true })
-map("n", "<leader>dc", ":lua require('dap').continue()<CR>", { desc = "dap continue", silent = true })
-map("n", "<leader>dn", ":lua require('dap').step_over()<CR>", { desc = "dap step over", silent = true })
+map("n", "<leader>dn", ":DapNew<CR>", { desc = "dap new", silent = true })
+map("n", "<leader>db", ":DapToggleBreakpoint<CR>", { desc = "dap breakpoint", silent = true })
+map("n", "<leader>do", ":DapStepOver<CR>", { desc = "dap step over", silent = true })
+map("n", "<leader>di", ":DapStepInto<CR>", { desc = "dap step into", silent = true })
 
--- supermaven 
-map("n", "<leader>ms", ":lua require('supermaven-nvim.api').toggle()<CR>", { desc = "Supermaven Toggle", silent = true })
+-- supermaven
+map(
+  "n",
+  "<leader>st",
+  ":lua require('supermaven-nvim.api').toggle()<CR>",
+  { desc = "Supermaven Toggle", silent = true }
+)
 
--- Keyboard users
-map("n", "<C-t>", function()
-  require("menu").open "default"
-end, {})
-
--- mouse users + nvimtree users!
-map("n", "<RightMouse>", function()
-  vim.cmd.exec '"normal! \\<RightMouse>"'
-  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
-  require("menu").open(options, { mouse = true })
-end, {})
+vim.g.VM_maps = {
+  ["Find Under"] = "<M-n>",
+  ["Find Subword Under"] = "<M-n>",
+  ["Select All"] = "<M-a>",
+  ["Skip Region"] = "<M-x>",
+  ["Remove Region"] = "<M-p>",
+}
