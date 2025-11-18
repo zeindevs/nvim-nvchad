@@ -19,9 +19,9 @@ return {
   },
 
   -- test new blink
-  -- {
-  --   import = "nvchad.blink.lazyspec",
-  -- },
+  {
+    import = "nvchad.blink.lazyspec",
+  },
 
   {
     "nvim-treesitter/nvim-treesitter",
@@ -45,15 +45,12 @@ return {
         "typescript",
         "javascript",
       },
-
       -- highlight= {
       --   enable = true,
       -- }
-
       -- autotag = {
       --   enable = true,
       -- },
-
       -- indent = {
       --   enable = true,
       -- }
@@ -132,7 +129,7 @@ return {
       "neovim/nvim-lspconfig",
       "nvim-telescope/telescope.nvim",
     },
-    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    event = "VeryLazy",
     config = function()
       require("venv-selector").setup {}
     end,
@@ -212,13 +209,13 @@ return {
     end,
   },
 
-  {
-    "onsails/lspkind.nvim",
-    event = "VeryLazy",
-    config = function()
-      require "configs.lspkind"
-    end,
-  },
+  -- {
+  --   "onsails/lspkind.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require "configs.lspkind"
+  --   end,
+  -- },
 
   {
     "rachartier/tiny-inline-diagnostic.nvim",
@@ -230,17 +227,10 @@ return {
   },
 
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      {
-        "supermaven-inc/supermaven-nvim",
-        event = "InsertEnter", -- load only when needed
-        opts = {},
-      },
-    },
-    opts = function(_, opts)
-      opts.sources[1].trigger_chars = { "-" }
-      table.insert(opts.sources, 1, { name = "supermaven" })
+    "supermaven-inc/supermaven-nvim",
+    event = "InsertEnter",
+    config = function()
+      require("supermaven-nvim").setup {}
     end,
   },
 
@@ -254,7 +244,7 @@ return {
 
   {
     "oribarilan/lensline.nvim",
-    tag = "1.0.0", -- or: branch = 'release/1.x' for latest non-breaking updates
+    tag = "1.0.0",
     event = "LspAttach",
     config = function()
       require("lensline").setup()
@@ -275,6 +265,27 @@ return {
     },
     init = function()
       vim.g.db_ui_use_nerd_fonts = 1
+    end,
+  },
+
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {},
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("noice").setup {
+        presets = {
+          bottom_search = true,
+          command_palette = true,
+          long_message_to_split = true,
+          inc_rename = false,
+          lsp_doc_border = false,
+        },
+      }
     end,
   },
 

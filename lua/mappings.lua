@@ -6,6 +6,8 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")
 
+-- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
 -- Keyboard users
 map("n", "<C-t>", function()
   require("menu.utils").delete_old_menus()
@@ -58,9 +60,6 @@ map("n", "<leader>rf", ":RunFile<CR>", { desc = "RunFile" })
 map("n", "<leader>sv", ":VenvSelect<cr>", { desc = "VenvSelect" })
 
 map("n", "<leader>du", ":DBUI<CR>", { desc = "DBUI" })
-
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
---
 
 -- kulala
 map("n", "<M-[>", ":lua require('kulala').jump_prev()<CR>", { desc = "kulala jump_next", silent = true })
