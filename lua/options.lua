@@ -1,6 +1,8 @@
 require "nvchad.options"
 
 -- add yours here!
+vim.opt.spell = false
+vim.opt.spelllang = { "en_us" }
 
 -- local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!

@@ -5,7 +5,6 @@ return {
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -20,6 +19,7 @@ return {
 
   -- test new blink
   {
+    enabled = false,
     import = "nvchad.blink.lazyspec",
   },
 
@@ -45,15 +45,15 @@ return {
         "typescript",
         "javascript",
       },
-      -- highlight= {
-      --   enable = true,
-      -- }
+      highlight = {
+        enable = true,
+      },
       -- autotag = {
       --   enable = true,
       -- },
-      -- indent = {
-      --   enable = true,
-      -- }
+      indent = {
+        enable = true,
+      },
     },
     config = function(_, opts)
       vim.filetype.add {
@@ -97,6 +97,7 @@ return {
 
   -- HTTP REST-Client Interface
   {
+    enable = false,
     "mistweaverco/kulala.nvim",
     ft = { "http", "rest" },
     opts = {
@@ -109,9 +110,21 @@ return {
   -- Code Runner
   {
     "CRAG666/code_runner.nvim",
-    opts = require "configs.coderunner",
+    event = "VeryLazy",
     config = function()
-      require("code_runner").setup {}
+      require("code_runner").setup {
+        mode = "float",
+        float = {
+          border = "single",
+        },
+        filetype = {
+          typescript = "tsx",
+          php = "php",
+          go = "go run",
+          lua = "lua",
+          zig = "zig run",
+        },
+      }
     end,
   },
 
@@ -138,6 +151,7 @@ return {
   -- nvim-dap
   {
     "mfussenegger/nvim-dap",
+    event = "VeryLazy",
     dependencies = {
       "leoluz/nvim-dap-go",
       "rcarriga/nvim-dap-ui",
@@ -149,17 +163,17 @@ return {
   },
 
   -- markdown
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "echasnovski/mini.nvim",
-    },
-    opts = {},
-    config = function()
-      require("render-markdown").setup {}
-    end,
-  },
+  -- {
+  --   "MeanderingProgrammer/render-markdown.nvim",
+  --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter",
+  --     "echasnovski/mini.nvim",
+  --   },
+  --   opts = {},
+  --   config = function()
+  --     require("render-markdown").setup {}
+  --   end,
+  -- },
 
   -- flutter/dart
   {
@@ -175,6 +189,7 @@ return {
   },
 
   {
+    -- enabled = false,
     "wakatime/vim-wakatime",
     lazy = false,
   },
@@ -227,6 +242,7 @@ return {
   },
 
   {
+    enabled = false,
     "supermaven-inc/supermaven-nvim",
     event = "InsertEnter",
     config = function()
@@ -234,13 +250,13 @@ return {
     end,
   },
 
-  {
-    "github/copilot.vim",
-    -- event = "InsertEnter",
-    config = function()
-      require("copilot").setup {}
-    end,
-  },
+  -- {
+  --   "github/copilot.vim",
+  --   -- event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup {}
+  --   end,
+  -- },
 
   {
     "oribarilan/lensline.nvim",
@@ -270,11 +286,14 @@ return {
 
   {
     "folke/noice.nvim",
+    enabled = false,
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      max_width = 120,
+    },
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      -- "rcarriga/nvim-notify",
     },
     config = function()
       require("noice").setup {
@@ -289,9 +308,151 @@ return {
     end,
   },
 
+  {
+    "hedyhli/outline.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("outline").setup {}
+    end,
+  },
+
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+    lazy = false,
+  },
+
+  {
+    "MagicDuck/grug-far.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("grug-far").setup {}
+    end,
+  },
+
+  -- {
+  --   "nickjvandyke/opencode.nvim",
+  --   event = "VeryLazy",
+  --   version = "*", -- Latest stable release
+  --   dependencies = {
+  --     {
+  --       -- `snacks.nvim` integration is recommended, but optional
+  --       ---@module "snacks" <- Loads `snacks.nvim` types for configuration intellisense
+  --       "folke/snacks.nvim",
+  --       optional = true,
+  --       opts = {
+  --         input = {}, -- Enhances `ask()`
+  --         picker = { -- Enhances `select()`
+  --           actions = {
+  --             opencode_send = function(...)
+  --               return require("opencode").snacks_picker_send(...)
+  --             end,
+  --           },
+  --           win = {
+  --             input = {
+  --               keys = {
+  --                 ["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+  --               },
+  --             },
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  --   config = function()
+  --     vim.g.opencode_opts = {}
+  --     vim.o.autoread = true -- Required for `opts.events.reload`
+  --
+  --     -- Recommended/example keymaps
+  --     vim.keymap.set({ "n", "x" }, "<C-a>", function()
+  --       require("opencode").ask("@this: ", { submit = true })
+  --     end, { desc = "Ask opencode…" })
+  --     vim.keymap.set({ "n", "x" }, "<C-x>", function()
+  --       require("opencode").select()
+  --     end, { desc = "Execute opencode action…" })
+  --     vim.keymap.set({ "n", "t" }, "<C-.>", function()
+  --       require("opencode").toggle()
+  --     end, { desc = "Toggle opencode" })
+  --
+  --     vim.keymap.set({ "n", "x" }, "go", function()
+  --       return require("opencode").operator "@this "
+  --     end, { desc = "Add range to opencode", expr = true })
+  --     vim.keymap.set("n", "goo", function()
+  --       return require("opencode").operator "@this " .. "_"
+  --     end, { desc = "Add line to opencode", expr = true })
+  --
+  --     vim.keymap.set("n", "<S-C-u>", function()
+  --       require("opencode").command "session.half.page.up"
+  --     end, { desc = "Scroll opencode up" })
+  --     vim.keymap.set("n", "<S-C-d>", function()
+  --       require("opencode").command "session.half.page.down"
+  --     end, { desc = "Scroll opencode down" })
+  --
+  --     -- You may want these if you use the opinionated `<C-a>` and `<C-x>` keymaps above
+  --     -- otherwise consider `<leader>o…` (and remove terminal mode from the `toggle` keymap)
+  --     vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
+  --     vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
+  --   end,
+  -- },
+
+  {
+    "dmtrKovalenko/fff.nvim",
+    build = function()
+      -- this will download prebuild binary or try to use existing rustup toolchain to build from source
+      -- (if you are using lazy you can use gb for rebuilding a plugin if needed)
+      require("fff.download").download_or_build_binary()
+    end,
+    -- if you are using nixos
+    -- build = "nix run .#release",
+    opts = { -- (optional)
+      debug = {
+        enabled = false,
+        show_scores = false,
+      },
+    },
+    -- No need to lazy-load with lazy.nvim.
+    -- This plugin initializes itself lazily.
+    lazy = false,
+    keys = {
+      {
+        "fn", -- try it if you didn't it is a banger keybinding for a picker
+        function()
+          require("fff").find_files()
+        end,
+        desc = "FFFind files",
+      },
+      {
+        "fg",
+        function()
+          require("fff").live_grep()
+        end,
+        desc = "LiFFFe grep",
+      },
+      {
+        "fz",
+        function()
+          require("fff").live_grep {
+            grep = {
+              modes = { "fuzzy", "plain" },
+            },
+          }
+        end,
+        desc = "Live fffuzy grep",
+      },
+      {
+        "fc",
+        function()
+          require("fff").live_grep { query = vim.fn.expand "<cword>" }
+        end,
+        desc = "Search current word",
+      },
+    },
+  },
+
   -- load local plugin example.nvim
   -- {
-  --   dir = "D:/PROJECT/Nvim/example.nvim",
+  --   dir = "~/.config/example.nvim",
   --   opts = {},
   -- },
 }

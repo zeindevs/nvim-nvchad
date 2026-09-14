@@ -9,18 +9,18 @@ M.nvdash = {
 }
 
 -- M.ui = {
---       tabufline = {
---          lazyload = false
---      }
---}
+--   tabufline = {
+--     lazyload = false,
+--   },
+-- }
 
 M.base46 = {
-  theme = "onedark",
+  theme = "default-dark",
   integrations = { "dap" },
 
   -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
+  --   Comment = { italic = true },
+  --   ["@comment"] = { italic = true },
   -- },
 }
 

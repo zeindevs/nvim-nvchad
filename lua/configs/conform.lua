@@ -7,17 +7,17 @@ local options = {
     javascript = { "biome" },
     css = { "biome" },
     json = { "biome" },
-    html = { "biome" },
+    html = { "prettier" },
     proto = { "buf" },
     asm = { "asmfmt" },
     ruby = { "rubyfmt" },
+    tex = { "tex-fmt" },
+    typ = { "typstyle" }
   },
-
   -- format_on_save = {
   --   --   -- These options will be passed to conform.format()
   --   timeout_ms = 1500,
   --   lsp_fallback = true,
   -- },
 }
-
 return options

@@ -23,16 +23,19 @@ map("n", "<RightMouse>", function()
   require("menu").open(options, { mouse = true })
 end, {})
 
-map("n", "<leader>lg", ":LazyGit<CR>", { desc = "LazyGit" })
-map("n", "<leader>lr", ":LspRestart<CR>", { desc = "LspRestart" })
-map("n", "<leader>lt", ":LenslineToggle<CR>", { desc = "LenslineToggle" })
+map("n", "<leader>lg", ":LazyGit<CR>", { desc = "LazyGit", silent = true })
+map("n", "<leader>le", ":lsp enable<CR>", { desc = "LspEnable", silent = true })
+map("n", "<leader>ld", ":lsp disable<CR>", { desc = "LspDisable", silent = true })
+map("n", "<leader>lr", ":lsp restart<CR>", { desc = "LspRestart", silent = true })
+map("n", "<leader>ls", ":lsp stop<CR>", { desc = "LspStop", silent = true })
+map("n", "<leader>lt", ":LenslineToggle<CR>", { desc = "LenslineToggle", silent = true })
 
 -- lsp
 map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", { desc = "LSP Code Action", silent = true })
 map("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>", { desc = "LSP go to definition", silent = true })
 -- telescope
-map("n", "<leader>fd", "<cmd>Telescope lsp_definitions<CR>", { desc = "telescope find definitions" })
-map("n", "<leader>fr", "<cmd>Telescope lsp_references<CR>", { desc = "telescope find references" })
+map("n", "<leader>fd", ":Telescope lsp_definitions<CR>", { desc = "telescope find definitions", silent = true })
+map("n", "<leader>fr", ":Telescope lsp_references<CR>", { desc = "telescope find references", silent = true })
 
 -- neotest
 map(
@@ -53,13 +56,14 @@ map("n", "<leader>tp", ":lua require('neotest').output_panel.toggle()<CR>", { de
 map("n", "<leader>to", ":lua require('neotest').output.open()<CR>", { desc = "NeoTestOutput", silent = true })
 
 -- code runner
-map("n", "<leader>rc", ":RunCode<CR>", { desc = "RunCode" })
-map("n", "<leader>rf", ":RunFile<CR>", { desc = "RunFile" })
+map("n", "<leader>rc", ":RunCode<CR>", { desc = "RunCode", silent = true })
+map("n", "<leader>rf", ":RunFile<CR>", { desc = "RunFile", silent = true })
 
 -- venv
-map("n", "<leader>sv", ":VenvSelect<cr>", { desc = "VenvSelect" })
+map("n", "<leader>sv", ":VenvSelect<cr>", { desc = "VenvSelect", silent = true })
 
-map("n", "<leader>du", ":DBUI<CR>", { desc = "DBUI" })
+-- dbui
+map("n", "<leader>du", ":DBUI<CR>", { desc = "DBUI", silent = true })
 
 -- kulala
 map("n", "<M-[>", ":lua require('kulala').jump_prev()<CR>", { desc = "kulala jump_next", silent = true })
@@ -82,10 +86,19 @@ map(
   { desc = "Supermaven Toggle", silent = true }
 )
 
+-- outline
+map("n", "<leader>o", ":Outline<CR>", { desc = "Toggle Outline", silent = true })
+
+-- grug far
+map("n", "<leader>gf", ":GrugFar<CR>", { desc = "GrugFar", silent = true })
+
+-- visual multi
 vim.g.VM_maps = {
   ["Find Under"] = "<M-n>",
   ["Find Subword Under"] = "<M-n>",
   ["Select All"] = "<M-a>",
   ["Skip Region"] = "<M-x>",
-  ["Remove Region"] = "<M-p>",
+  ["Remove Region"] = "<M-q>",
+  ["Undo"] = "u",
+  ["Redo"] = "<C-r>",
 }
